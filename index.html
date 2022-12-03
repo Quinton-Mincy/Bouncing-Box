@@ -1,0 +1,54 @@
+<html style='background-color: black'>
+  <div id="my_bouncing_box" style= "background-color: orangered; border-radius: 3px; position: absolute; left: 0px; top: 0px; min-width: 100px; min-height: 100px; text-align: center; font-weight: bold; color: #999;" >Quinton</div>
+  <script type="text/javascript">
+      // default values
+      let origin_left = 0 ;
+      let origin_top = 0 ;
+      let bottom = window.innerHeight;
+      let right = window.innerWidth;
+      vertical = true
+      horizontal = true
+      timer = 0;
+      
+      function moveTheBox() {
+        my_box_realtime = document.getElementById('my_bouncing_box');
+        my_box_realtime.style.left = origin_left;
+        my_box_realtime.style.top = origin_top;
+
+        if (origin_left == right-100){
+           horizontal = false
+       }
+        else if(origin_left == 0){
+            horizontal = true
+        }
+
+        if (origin_top == bottom-100){
+           vertical = false
+       }
+        else if(origin_top == 0){
+            vertical = true
+        }
+
+       if (vertical == true && horizontal == true){
+           origin_left++;
+           origin_top++
+       }
+       if (vertical == true && horizontal == false){
+           origin_left--;
+           origin_top++;
+       }
+
+       if (vertical == false && horizontal == true){
+           origin_left++;
+           origin_top--;
+       }
+       if (vertical == false && horizontal == false){
+           origin_left--;
+           origin_top--;
+       }
+       
+      }
+
+      myBox = setInterval(moveTheBox, 10);
+  </script>
+</html>
